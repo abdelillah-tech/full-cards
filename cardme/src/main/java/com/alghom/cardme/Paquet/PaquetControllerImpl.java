@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/paquet")
-public class PaquetController {
+public class PaquetControllerImpl implements PaquetContoller {
     private PaquetOperations paquetOperations;
 
-    public PaquetController(PaquetOperations paquetOperations) {
+    public PaquetControllerImpl(PaquetOperations paquetOperations) {
         this.paquetOperations = paquetOperations;
     }
 

@@ -1,55 +1,59 @@
 package com.alghom.cardme;
 
-import com.alghom.cardme.Main.Main;
-import com.alghom.cardme.Main.MainOperations;
-import com.alghom.cardme.Main.MainOperationsImpl;
-import com.alghom.cardme.Paquet.Paquet;
-import com.alghom.cardme.Paquet.PaquetOperations;
-import com.alghom.cardme.Paquet.PaquetOperationsImpl;
+import com.alghom.cardme.Main.*;
+import com.alghom.cardme.Paquet.*;
+
+import java.io.PrintStream;
 
 public class ConsoleApplication {
     public static void run() {
+
+        PrintStream printer = System.out;
+
         PaquetOperations paquetOperations = new PaquetOperationsImpl(new Paquet());
-        System.out.println("paquet non mélangé: " + paquetOperations.getPaquet());
-        paquetOperations.melanger();
-        System.out.println("paquet mélangé: " + paquetOperations.getPaquet());
+        PaquetConsoleContoller paquetConsoleContoller = new PaquetConsoleControllerImpl(printer, paquetOperations);
+        paquetConsoleContoller.avoirPaquet();
+        paquetConsoleContoller.melanger();
 
+        printer.println("Main 0");
         MainOperations mainOperations = new MainOperationsImpl(paquetOperations, new Main());
-        mainOperations.avoirNouvellesCartes();
-        System.out.println("premiere main: " + mainOperations.getMain());
+        MainConsoleController mainConsoleController = new MainConsoleControllerImpl(printer, mainOperations);
+        mainConsoleController.avoirMain();
+        mainConsoleController.nouvellesCartes();
+        mainConsoleController.trieCouleur();
+        mainConsoleController.trieValeur();
 
-        mainOperations.trierParCouleur();
-        System.out.println("premiere main trié par couleur: " + mainOperations.getMain());
-
-        mainOperations.trierParValeur();
-        System.out.println("premiere main trié par valeur: " + mainOperations.getMain());
-
+        printer.println("Main 1");
         MainOperations mainOperations1 = new MainOperationsImpl(paquetOperations, new Main());
-        mainOperations1.avoirNouvellesCartes();
-        System.out.println("deuxieme main: " + mainOperations1.getMain());
+        mainConsoleController = new MainConsoleControllerImpl(printer, mainOperations1);
+        mainConsoleController.nouvellesCartes();
 
+        printer.println("Main 2");
         MainOperations mainOperations2 = new MainOperationsImpl(paquetOperations, new Main());
-        mainOperations2.avoirNouvellesCartes();
-        System.out.println("troisieme main: " + mainOperations2.getMain());
+        mainConsoleController = new MainConsoleControllerImpl(printer, mainOperations2);
+        mainConsoleController.nouvellesCartes();
 
+        printer.println("Main 3");
         MainOperations mainOperations3 = new MainOperationsImpl(paquetOperations, new Main());
-        mainOperations3.avoirNouvellesCartes();
-        System.out.println("quatrieme main: " + mainOperations3.getMain());
+        mainConsoleController = new MainConsoleControllerImpl(printer, mainOperations3);
+        mainConsoleController.nouvellesCartes();
 
+        printer.println("Main 4");
         MainOperations mainOperations4 = new MainOperationsImpl(paquetOperations, new Main());
-        mainOperations4.avoirNouvellesCartes();
-        System.out.println("cinqieme main: " + mainOperations4.getMain());
+        mainConsoleController = new MainConsoleControllerImpl(printer, mainOperations4);
+        mainConsoleController.nouvellesCartes();
 
+        printer.println("Main 5");
         MainOperations mainOperations5 = new MainOperationsImpl(paquetOperations, new Main());
-        mainOperations5.avoirNouvellesCartes();
-        System.out.println("sixieme main: " + mainOperations5.getMain());
+        mainConsoleController = new MainConsoleControllerImpl(printer, mainOperations5);
+        mainConsoleController.nouvellesCartes();
 
+        printer.println("Main 6");
         MainOperations mainOperations6 = new MainOperationsImpl(paquetOperations, new Main());
-        mainOperations6.avoirNouvellesCartes();
-        System.out.println("septieme main: " + mainOperations6.getMain());
+        mainConsoleController = new MainConsoleControllerImpl(printer, mainOperations6);
+        mainConsoleController.nouvellesCartes();
 
-        System.out.println("paquet vidé: " + paquetOperations.getPaquet());
-        paquetOperations.reinitPaquet();
-        System.out.println("regener les cartes du paquet: " + paquetOperations.getPaquet());
+        paquetConsoleContoller.avoirPaquet();
+        paquetConsoleContoller.reinitPaquet();
     }
 }
