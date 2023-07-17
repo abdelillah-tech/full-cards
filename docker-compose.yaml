@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./cardme-ui
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+  backend:
+    build:
+      context: ./cardme
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8080:8080

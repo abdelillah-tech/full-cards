@@ -1,0 +1,18 @@
+body, html {
+    color: black;
+    text-align: center;
+    font-family: Roboto, Helvetica, sans-serif;
+}
+
+.control {
+    text-align: center;
+    margin: 10px;
+}
+
+.control-button {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 3px;
+}
